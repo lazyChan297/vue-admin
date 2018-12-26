@@ -1,6 +1,4 @@
-<template>
-    <div class="item" v-if="title">{{title}}</div>
-</template>
+
 <script>
     export default {
         name: 'MenuItem',
@@ -14,19 +12,20 @@
             type: String,
             default: ''
             }
+        },
+        render(h, context) {
+            // console.log(context.props)
+            // const { icon, title } = context.props
+            // const vnodes = []
+
+            // if (icon) {
+            // vnodes.push(<svg-icon icon-class={icon}/>)
+            // }
+
+            // if (title) {
+            // vnodes.push(<span slot='title'>{(title)}</span>)
+            // }
+            return h('span', this.title)
         }
-        // render(h, context) {
-        //     const { icon, title } = context.props
-        //     const vnodes = []
-
-        //     if (icon) {
-        //     vnodes.push(<svg-icon icon-class={icon}/>)
-        //     }
-
-        //     if (title) {
-        //     vnodes.push(<span slot='title'>{(title)}</span>)
-        //     }
-        //     return vnodes
-        // }
     }
 </script>

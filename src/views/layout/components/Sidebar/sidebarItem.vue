@@ -5,7 +5,6 @@
         <template v-if="hasOneShowingChild(item.children, item)&&(!onlyOneChild.children || noShowingChildren)">
             <app-link :to="resolvePath(onlyOneChild.path)">
                 <el-menu-item :index="onlyOneChild.path">
-                    <!-- <div>{{onlyOneChild.path}}</div> -->
                     <s-item :icon="onlyOneChild.meta.icon"
                         :title="onlyOneChild.meta.title">
                     </s-item>
@@ -14,19 +13,26 @@
         </template>
         <!-- 点击下拉／隐藏子菜单 -->
         <el-submenu v-else :index="resolvePath(item.path)">
-            <template solt="title">
-                <item v-if="item.meta" :title="item.meta.title">
-                </item>
+            <!-- <div>title</div> -->
+            <template slot="title">
+                <s-item v-if="item.meta" :title="item.meta.title">
+                </s-item>
             </template>
             <!-- 隐藏的子菜单列表 -->
             <template v-for="child in item.children" v-if="!child.hidden">
                 <sidebar-item 
                     v-if="child.children&&child.children.length>0"
-                    :item="child">
+                    :item="child"
+                    :key="child.path"
+                    :base-path="resolvePath(child.path)"
+                    :is-nest="true">
                 </sidebar-item>
                 <app-link v-else :to="resolvePath(child.path)">
-                    <el-menu-item>
-                        <s-item v-if="child.meta" :title="child.meta.title"></s-item>
+                    <el-menu-item :index="resolvePath(child.path)">
+                        <s-item 
+                            v-if="child.meta" 
+                            :title="child.meta.title" >
+                        </s-item>
                     </el-menu-item>
                 </app-link>
             </template>
@@ -69,7 +75,7 @@
                         return true
                     }
                 })
-                console.log(this.onlyOneChild)
+                // console.log(this.onlyOneChild)
                 // 显示该条子路由
                 if (showingChild.length === 1) {
                     return true 
@@ -83,6 +89,7 @@
             },
             resolvePath(routePath) {
                 // 绝对路径/this.basePath/routePath
+                // console.log(this.basePath)
                 return path.resolve(this.basePath, routePath)
             }
         }

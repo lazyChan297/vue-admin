@@ -3,9 +3,11 @@
     <el-scrollbar wrap-class="scroll-wrapper" cl>
         <el-menu
             :show-timeout="200"
-            mode="vertical"
+            mode="horizontal"
+            menu-trigger="click"
+            :unique-opened="isUnique"
             :collapse="isCollpse">
-            <sidebar-item v-for="route in routes" :item="route"></sidebar-item>
+            <sidebar-item v-for="route in routes" :item="route" :base-path="route.path"/>
         </el-menu>
     </el-scrollbar>
 </template>
@@ -14,7 +16,8 @@
     export default {
         data() {
             return {
-                isCollpse: true
+                isCollpse: true,
+                isUnique: true
             }
         },
         created() {
