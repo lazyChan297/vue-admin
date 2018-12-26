@@ -1,6 +1,6 @@
 <template>
-    <div class="app-wrapper">
-        <!-- 导航 -->
+    <div class="app-wrapper" :class="classObj">
+        <!-- menu -->
         <sidebar/>
         <div class="main-container">
             <navbar/>
@@ -13,13 +13,32 @@ import Sidebar from './components/Sidebar'
 import Navbar from './components/navbar'
 import AppMain from './components/AppMain'
 export default {
-    components: {
-        Sidebar,
-        Navbar,
-        AppMain
+  components: {
+    Sidebar,
+    Navbar,
+    AppMain
+  },
+  computed: {
+    sidebar () {
+      return this.$store.state.app.sidebar
+    },
+    classObj () {
+        return {
+            hideSidebar: this.sidebar.opened,
+            openSidebar: !this.sidebar.opened
+        }
     }
+  }
 }
 </script>
 <style lang="stylus" scoped>
-    
+    .app-wrapper
+      height:100%
+      &.hideSidebar
+       .main-container
+         margin-left: 64px
+      &.openSidebar
+        .main-container
+         margin-left: 200px
 </style>
+

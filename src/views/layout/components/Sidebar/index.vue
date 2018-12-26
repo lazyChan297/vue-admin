@@ -1,40 +1,48 @@
-<!-- 左侧导航菜单 -->
+<!-- 导航菜单 -->
 <template>
-    <el-scrollbar wrap-class="scroll-wrapper" cl>
+    <el-scrollbar wrap-class="scroll-wrapper">
+        <!--
+            show-timeout 展开延时
+            collapse: 是否水平折叠收起菜单
+        -->
         <el-menu
             :show-timeout="200"
-            mode="horizontal"
-            menu-trigger="click"
-            :unique-opened="isUnique"
-            :collapse="isCollpse">
-            <sidebar-item v-for="route in routes" :item="route" :base-path="route.path"/>
+            :default-active="$route.path"
+            mode="vertical"
+            :collapse="isCollpse"
+            background-color="#304156"
+            text-color="#bfcbd9"
+            active-text-color="#409EFF">
+            <sidebar-item v-for="route in routes" :item="route" :base-path="route.path" :key="route.path"/>
         </el-menu>
     </el-scrollbar>
 </template>
 <script>
-    import SidebarItem from './sidebarItem'
-    export default {
-        data() {
-            return {
-                isCollpse: true,
-                isUnique: true
-            }
-        },
-        created() {
-            console.log(this.routes)
-        },
-        computed: {
-            // 获取路由表
-            routes() {
-                return this.$router.options.routes
-            }
-        },
-        components: {
-            SidebarItem
-        }
-        
-        
+import SidebarItem from './sidebarItem'
+import {mapGetters} from 'vuex'
+export default {
+  data () {
+    return {
+      isUnique: true
     }
+  },
+  computed: {
+    ...mapGetters([
+      'sidebar'
+    ]),
+    // 获取路由表
+    routes () {
+      return this.$router.options.routes
+    },
+    isCollpse() {
+        console.log(this.sidebar)
+        return this.sidebar.opened
+    }
+  },
+  components: {
+    SidebarItem
+  }
+}
 </script>
 <style lang="stylus" scoped>
     .el-scrollbar
@@ -42,4 +50,10 @@
         left:0
         top:0
         bottom:0
+        height:100%
+        background:#304156
+    .scroll-wrapper.el-scrollbar__wrap
+      overflow:hidden
+    .el-menu
+        border-right:0
 </style>

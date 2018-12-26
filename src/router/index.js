@@ -11,6 +11,7 @@ export default new Router({
       path: '/',
       redirect: '/dashboard',
       component: Layout,
+      name: 'Dashboard',
       children: [{
         path: '/dashboard',
         component: () => import('@/views/dashboard/index'),
@@ -24,6 +25,7 @@ export default new Router({
       path: '/nested',
       redirect: '/nested/menu1',
       component: Layout,
+      name: 'Nested',
       meta: {
         title: 'Nested',
         icon: 'nested'
@@ -31,6 +33,7 @@ export default new Router({
       children: [
         {
           path: 'menu1',
+          name: 'menu1',
           component: () => import('@/views/nested/menu1/index'),
           meta: {
             title: 'menu1'
@@ -38,6 +41,7 @@ export default new Router({
         },
         {
           path: 'menu2',
+          name: 'menu2',
           component: () => import('@/views/nested/menu2/index'),
           meta: {
             title: 'menu2'
@@ -49,7 +53,11 @@ export default new Router({
     {
       path: '/table',
       redirect: '/table/menu1',
+      name: 'table',
       component: Layout,
+      meta: {
+        title: 'table'
+      },
       children: [
         {
           path: '/table',
@@ -59,6 +67,6 @@ export default new Router({
           }
         }
       ]
-    },
+    }
   ]
 })
