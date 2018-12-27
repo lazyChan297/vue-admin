@@ -1,7 +1,9 @@
 <template>
     <div class="navbar-wrapper">
-        <hamburger :toggle-click="toggleSidebar" :is-active="sidebar.opened" class="hamburger-container"></hamburger>
-        <breadrumd />
+        <div class="navbar-left">
+          <hamburger :toggle-click="toggleSidebar" :is-active="sidebar.opened" class="hamburger-container"></hamburger>
+          <breadrumd />
+        </div>
     </div>
 </template>
 <script>
@@ -15,13 +17,13 @@ export default {
   },
   methods: {
     toggleSidebar () {
-        this.$store.dispatch('toggleSideBar')
+      this.$store.dispatch('toggleSideBar')
     }
   },
   computed: {
-      ...mapGetters([
-          'sidebar'
-      ])
+    ...mapGetters([
+      'sidebar'
+    ])
   }
 }
 </script>
@@ -34,5 +36,10 @@ export default {
         justify-content: space-between;
         align-items: center;
         padding: 0 15px;
+        .navbar-left
+          display: flex
+          align-items: center
+          .hamburger-container
+            line-height: 1;
+            margin-right: 10px
 </style>
-

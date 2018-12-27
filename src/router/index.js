@@ -56,14 +56,16 @@ export default new Router({
       name: 'table',
       component: Layout,
       meta: {
-        title: 'table'
+        title: 'table',
+        icon: 'table'
       },
       children: [
         {
           path: '/table',
           component: () => import('@/views/table/index'),
           meta: {
-            title: 'table'
+            title: 'table',
+            icon: 'table'
           }
         }
       ]

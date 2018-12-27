@@ -14,7 +14,7 @@
         <!--点击下拉／隐藏子菜单-->
         <el-submenu v-else :index="resolvePath(item.path)">
             <template slot="title">
-                <s-item v-if="item.meta" :title="item.meta.title">
+                <s-item v-if="item.meta" :title="item.meta.title" :icon="item.meta.icon">
                 </s-item>
             </template>
             <!--隐藏的子菜单列表-->
@@ -30,7 +30,8 @@
                     <el-menu-item :index="resolvePath(child.path)">
                         <s-item
                             v-if="child.meta"
-                            :title="child.meta.title" >
+                            :title="child.meta.title"
+                            :icon="item.meta.icon" >
                         </s-item>
                     </el-menu-item>
                 </app-link>
@@ -93,7 +94,16 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
-    .menu-wrapper
-        min-width: 200px
+<style>
+    .menu-wrapper{
+      min-width:0;
+      width: 100%;
+    }
+    .el-submenu__title {
+      
+    }     
+    .el-submenu .el-menu-item {
+      min-width:0;
+      padding: 0 20px !important
+    }
 </style>

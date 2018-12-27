@@ -1,4 +1,4 @@
 const getters = {
-    sidebar: state => state.app.sidebar
+  sidebar: state => state.app.sidebar
 }
 export default getters

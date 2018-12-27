@@ -34,9 +34,8 @@ export default {
     routes () {
       return this.$router.options.routes
     },
-    isCollpse() {
-        console.log(this.sidebar)
-        return this.sidebar.opened
+    isCollpse () {
+      return this.sidebar.opened
     }
   },
   components: {
@@ -44,16 +43,19 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
+<style lang="stylus">
     .el-scrollbar
-        position:fixed
-        left:0
-        top:0
-        bottom:0
-        height:100%
-        background:#304156
-    .scroll-wrapper.el-scrollbar__wrap
-      overflow:hidden
+      position:fixed
+      left:0
+      top:0
+      bottom:0
+      height:100%
+      background:#304156
+      .scroll-wrapper
+        overflow:hidden !important
+        margin-right: 0 !important
     .el-menu
-        border-right:0
+      border-right:0
+    .el-menu--collapse
+      width:49px;
 </style>

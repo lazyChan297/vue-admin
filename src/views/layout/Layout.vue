@@ -23,10 +23,10 @@ export default {
       return this.$store.state.app.sidebar
     },
     classObj () {
-        return {
-            hideSidebar: this.sidebar.opened,
-            openSidebar: !this.sidebar.opened
-        }
+      return {
+        hideSidebar: this.sidebar.opened,
+        openSidebar: !this.sidebar.opened
+      }
     }
   }
 }
@@ -36,9 +36,8 @@ export default {
       height:100%
       &.hideSidebar
        .main-container
-         margin-left: 64px
+         margin-left: 49px
       &.openSidebar
         .main-container
-         margin-left: 200px
+         margin-left: 113px
 </style>
-

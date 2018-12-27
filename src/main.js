@@ -5,8 +5,9 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import store from './store'
-import './common/stylus/index.styl'
 import 'element-ui/lib/theme-chalk/index.css'
+import './common/stylus/index.styl'
+import '@/icons' // icon
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)

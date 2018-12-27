@@ -1,41 +1,41 @@
-<temoplate>
+<template>
     <svg :class="svgClass" aria-hidden="true">
-        <use :xlink:href="iconName"></use>
+      <use :xlink:href="iconName"/>
     </svg>
-</temoplate>
+</template>
 <script>
 export default {
-    name: 'SvgIcon',
-    props: {
-        iconClass: {
-            type: String,
-            required: true
-        },
-        className: {
-            type: String,
-            default: ''
-        }
+  name: 'SvgIcon',
+  props: {
+    iconClass: {
+      type: String,
+      required: true
     },
-    computed: {
-        iconName() {
-            return `#icon-${this.iconClass}`
-        },
-        svgClass() {
-            if (this.className) {
-                return 'svg-icon' + this.className
-            } else {
-                return 'svg-icon'
-            }
-        }
+    className: {
+      type: String,
+      default: ''
     }
+  },
+  computed: {
+    iconName () {
+      return `#icon-${this.iconClass}`
+    },
+    svgClass () {
+      if (this.className) {
+        return 'svg-icon' + this.className
+      } else {
+        return 'svg-icon'
+      }
+    }
+  }
 }
 </script>
 <style scoped>
 .svg-icon {
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.15em;
+    width: 12px;
+    height: 12px;
     fill: currentColor;
     overflow: hidden;
+    margin-right:16px
 }
 </style>
