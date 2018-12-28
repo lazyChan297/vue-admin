@@ -95,13 +95,10 @@ export default {
 }
 </script>
 <style>
-    .menu-wrapper{
+    .menu-wrapper {
       min-width:0;
       width: 100%;
     }
-    .el-submenu__title {
-      
-    }     
     .el-submenu .el-menu-item {
       min-width:0;
       padding: 0 20px !important
