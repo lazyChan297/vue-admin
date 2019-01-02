@@ -4,6 +4,18 @@
           <hamburger :toggle-click="toggleSidebar" :is-active="sidebar.opened" class="hamburger-container"></hamburger>
           <breadrumd />
         </div>
+        <el-dropdown class="navbar-right" trigger="click">
+            <div class="el-dropdown-link">
+              <img :src="avatar" alt="" width="40" height="40">
+              <i class="el-icon-arrow-down el-icon--right"></i>
+            </div>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>Home</el-dropdown-item>
+              <el-dropdown-item divided>
+                <span style="display:block;" @click="logout">logout</span>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
     </div>
 </template>
 <script>
@@ -15,15 +27,22 @@ export default {
     breadrumd,
     Hamburger
   },
+  computed: {
+    ...mapGetters([
+      'sidebar',
+      'avatar'
+    ])
+  },
   methods: {
     toggleSidebar () {
       this.$store.dispatch('toggleSideBar')
+    },
+    logout () {
+      console.log('logout')
+      this.$store.dispatch('LogOut').then(() => {
+        location.reload()
+      })
     }
-  },
-  computed: {
-    ...mapGetters([
-      'sidebar'
-    ])
   }
 }
 </script>
@@ -42,4 +61,9 @@ export default {
           .hamburger-container
             line-height: 1;
             margin-right: 10px
+        .navbar-right
+          height: 40px;
+          display: block;
+          img
+            border-radius:10px
 </style>

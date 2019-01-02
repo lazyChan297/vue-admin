@@ -8,6 +8,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/login',
+      component: () => import('@/views/login/index'),
+      hidden: true
+    },
+    {
       path: '/',
       redirect: '/dashboard',
       component: Layout,
@@ -52,17 +57,13 @@ export default new Router({
     // table
     {
       path: '/table',
-      redirect: '/table/menu1',
       name: 'table',
       component: Layout,
-      meta: {
-        title: 'table',
-        icon: 'table'
-      },
       children: [
         {
-          path: '/table',
+          path: 'index',
           component: () => import('@/views/table/index'),
+          name: 'table',
           meta: {
             title: 'table',
             icon: 'table'

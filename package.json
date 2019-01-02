@@ -13,7 +13,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "element-ui": "^2.4.11",
+    "js-cookie": "^2.2.0",
+    "nprogress": "^0.2.0",
     "path-to-regexp": "^2.4.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
