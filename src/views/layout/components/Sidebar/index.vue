@@ -1,6 +1,6 @@
 <!-- 导航菜单 -->
 <template>
-    <el-scrollbar wrap-class="scroll-wrapper">
+    <el-scrollbar wrap-class="scrollbar-wrapper">
         <!--
             show-timeout 展开延时
             collapse: 是否水平折叠收起菜单
@@ -43,19 +43,3 @@ export default {
   }
 }
 </script>
-<style lang="stylus">
-    .el-scrollbar
-      position:fixed
-      left:0
-      top:0
-      bottom:0
-      height:100%
-      background:#304156
-      .scroll-wrapper
-        overflow:hidden !important
-        margin-right: 0 !important
-    .el-menu
-      border-right:0
-    .el-menu--collapse
-      width:49px;
-</style>

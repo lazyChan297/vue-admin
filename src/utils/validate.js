@@ -1,4 +1,5 @@
 export function isvalidUsername (str) {
-  const valid_map = ['admin', 'editor1']
+  // eslint-disable-next-line
+  const valid_map = ['admin', 'editor']
   return valid_map.indexOf(str.trim()) >= 0
 }

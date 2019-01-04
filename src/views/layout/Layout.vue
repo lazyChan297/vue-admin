@@ -1,7 +1,7 @@
 <template>
     <div class="app-wrapper" :class="classObj">
         <!-- menu -->
-        <sidebar/>
+        <sidebar class="slidebar-container"/>
         <div class="main-container">
             <navbar/>
             <app-main/>
@@ -32,12 +32,26 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-    .app-wrapper
+    /* .app-wrapper
       height:100%
       &.hideSidebar
        .main-container
-         margin-left: 49px
+         margin-left: 36px
       &.openSidebar
         .main-container
-         margin-left: 113px
+         margin-left: 180px
+      .slidebar-container
+        transition: width 28s;
+        height: 100%;
+        position: fixed;
+        font-size: 0px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1001;
+        overflow: hidden;
+    .app-wrapper.openSidebar .slidebar-container
+        width: 180px !important;
+    .app-wrapper.hideSidebar .slidebar-container
+        width: 36px !important; */
 </style>

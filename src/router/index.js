@@ -15,6 +15,7 @@ export default new Router({
     {
       path: '/',
       redirect: '/dashboard',
+      hidden: true,
       component: Layout,
       name: 'Dashboard',
       children: [{
@@ -67,6 +68,23 @@ export default new Router({
           meta: {
             title: 'table',
             icon: 'table'
+          }
+        }
+      ]
+    },
+    // form
+    {
+      path: '/form',
+      name: 'form',
+      component: Layout,
+      children: [
+        {
+          path: 'index',
+          component: () => import('@/views/form/index'),
+          name: 'form',
+          meta: {
+            title: 'form',
+            icon: 'form'
           }
         }
       ]

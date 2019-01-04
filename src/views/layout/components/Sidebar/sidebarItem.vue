@@ -4,7 +4,7 @@
         <!-- 直接显示及1级路由or1级路由下的唯一一条子路由 点击不展开下拉列表直接跳转-->
         <template v-if="hasOneShowingChild(item.children, item)&&(!onlyOneChild.children || noShowingChildren)">
             <app-link :to="resolvePath(onlyOneChild.path)" :key="onlyOneChild.path">
-                <el-menu-item :index="onlyOneChild.path">
+                <el-menu-item :index="onlyOneChild.path" :class="{'submenu-title-noDropdown':'!isNest'}">
                     <s-item :icon="onlyOneChild.meta.icon"
                         :title="onlyOneChild.meta.title">
                     </s-item>
@@ -30,8 +30,7 @@
                     <el-menu-item :index="resolvePath(child.path)">
                         <s-item
                             v-if="child.meta"
-                            :title="child.meta.title"
-                            :icon="item.meta.icon" >
+                            :title="child.meta.title">
                         </s-item>
                     </el-menu-item>
                 </app-link>
@@ -52,6 +51,10 @@ export default {
     basePath: {
       type: String,
       default: ''
+    },
+    isNest: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -94,13 +97,3 @@ export default {
   }
 }
 </script>
-<style>
-    .menu-wrapper {
-      min-width:0;
-      width: 100%;
-    }
-    .el-submenu .el-menu-item {
-      min-width:0;
-      padding: 0 20px !important
-    }
-</style>

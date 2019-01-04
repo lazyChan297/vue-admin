@@ -1,44 +1,37 @@
 <template>
-    <div class="number-wrapper">
-        <button @click="add">add</button>
-        <button @click="remove">remove</button>
-        <div class="list">
-            <transition-group name="fade">
-                <span v-for="(item) in list" :key="item" class="item">{{item}}</span>
-            </transition-group>
-        </div>
-    </div>
-    </template>
+  <el-table
+    :data="tableData">
+    <el-table-column prop="name" label="姓名"></el-table-column>
+    <el-table-column prop="phone" label="电话"></el-table-column>
+    <el-table-column prop="address" label="地址"></el-table-column>
+  </el-table>
+</template>
 <script>
 export default {
   data () {
     return {
-      list: [1]
-    }
-  },
-  methods: {
-    add () {
-      let num = this.list.length
-      let index = Math.floor(Math.random() * num)
-      this.list.splice(index, 0, num + 1)
-    },
-    remove () {
-      let num = this.list.length
-      let index = Math.floor(Math.random() * num)
-      this.list.splice(index, 1)
+      tableData: [
+        {
+          name: 'louis',
+          phone: 18677185487,
+          address: '北京'
+        },
+        {
+          name: 'jay',
+          phone: 18677185400,
+          address: '上海'
+        },
+        {
+          name: 'tiffany',
+          phone: 18677185487,
+          address: '广州'
+        }
+      ]
     }
   }
 }
 </script>
 <style lang="stylus" scoped>
-    .fade-enter,
-    .fade-leave-to
-     opacity:0
-     transform:translateY(20px)
-    .fade-leave-active
-     position: absolute
-    .item
-        margin-right: 10px
-        display: inline-block
-        transition: all 0.5s
+  .el-table
+    padding 0 20px
 </style>
