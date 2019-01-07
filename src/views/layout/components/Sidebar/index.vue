@@ -12,8 +12,13 @@
             :collapse="isCollpse"
             background-color="#304156"
             text-color="#bfcbd9"
-            active-text-color="#409EFF">
+            active-text-color="#409EFF"
+        >
+            <!-- ！！！bug -->
             <sidebar-item v-for="route in routes" :item="route" :base-path="route.path" :key="route.path"/>
+            <!-- <div class="menu-wrapper" v-for="route in routes" :key="route.path">
+              <el-menu-item :index="route">{{route.path}}</el-menu-item>
+            </div> -->
         </el-menu>
     </el-scrollbar>
 </template>

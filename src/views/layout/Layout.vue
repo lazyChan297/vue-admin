@@ -2,6 +2,11 @@
     <div class="app-wrapper" :class="classObj">
         <!-- menu -->
         <sidebar class="slidebar-container"/>
+        <!-- <el-menu class="slidebar-container">
+          <div class="menu-wrapper" v-for="(item,index) in list" :key="index">
+            <el-menu-item :index="index">{{item}}</el-menu-item>
+          </div>
+        </el-menu> -->
         <div class="main-container">
             <navbar/>
             <app-main/>
@@ -17,6 +22,11 @@ export default {
     Sidebar,
     Navbar,
     AppMain
+  },
+  data () {
+    return {
+      list:['a','b','c']
+    }
   },
   computed: {
     sidebar () {

@@ -1,8 +1,9 @@
 <template>
     <!-- hidden:true 在导航菜单显示-->
     <div v-if="!item.hidden&&item.children" class="menu-wrapper">
+        <!-- <el-menu-item :index="item">test</el-menu-item> -->
         <!-- 直接显示及1级路由or1级路由下的唯一一条子路由 点击不展开下拉列表直接跳转-->
-        <template v-if="hasOneShowingChild(item.children, item)&&(!onlyOneChild.children || noShowingChildren)">
+        <template v-if="hasOneShowingChild(item.children, item)&&(!onlyOneChild.children || noShowingChildren)&&!item.alwaysShow">
             <app-link :to="resolvePath(onlyOneChild.path)" :key="onlyOneChild.path">
                 <el-menu-item :index="onlyOneChild.path" :class="{'submenu-title-noDropdown':'!isNest'}">
                     <s-item :icon="onlyOneChild.meta.icon"
@@ -17,7 +18,6 @@
                 <s-item v-if="item.meta" :title="item.meta.title" :icon="item.meta.icon">
                 </s-item>
             </template>
-            <!--隐藏的子菜单列表-->
             <template v-for="child in item.children" v-if="!child.hidden">
                 <sidebar-item
                     v-if="child.children&&child.children.length>0"

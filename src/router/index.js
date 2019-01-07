@@ -79,7 +79,7 @@ export default new Router({
       component: Layout,
       children: [
         {
-          path: 'index',
+          path: 'fromIndex',
           component: () => import('@/views/form/index'),
           name: 'form',
           meta: {
