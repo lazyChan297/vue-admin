@@ -3,7 +3,7 @@
     <div v-if="!item.hidden&&item.children" class="menu-wrapper">
         <!-- <el-menu-item :index="item">test</el-menu-item> -->
         <!-- 直接显示及1级路由or1级路由下的唯一一条子路由 点击不展开下拉列表直接跳转-->
-        <template v-if="hasOneShowingChild(item.children, item)&&(!onlyOneChild.children || noShowingChildren)&&!item.alwaysShow">
+        <template v-if="hasOneShowingChild(item.children, item)&&(!onlyOneChild.children || onlyOneChild.noShowingChildren)&&!item.alwaysShow">
             <app-link :to="resolvePath(onlyOneChild.path)" :key="onlyOneChild.path">
                 <el-menu-item :index="onlyOneChild.path" :class="{'submenu-title-noDropdown':'!isNest'}">
                     <s-item :icon="onlyOneChild.meta.icon"

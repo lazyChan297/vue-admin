@@ -15,7 +15,7 @@
             active-text-color="#409EFF"
         >
             <!-- ！！！bug -->
-            <sidebar-item v-for="route in routes" :item="route" :base-path="route.path" :key="route.path"/>
+            <sidebar-item v-for="route in permission_routes" :item="route" :base-path="route.path" :key="route.path"/>
             <!-- <div class="menu-wrapper" v-for="route in routes" :key="route.path">
               <el-menu-item :index="route">{{route.path}}</el-menu-item>
             </div> -->
@@ -31,9 +31,14 @@ export default {
       isUnique: true
     }
   },
+  created() {
+    console.log(1)
+    console.log(this.permission_routes)
+  },
   computed: {
     ...mapGetters([
-      'sidebar'
+      'sidebar',
+      'permission_routes'
     ]),
     // 获取路由表
     routes () {

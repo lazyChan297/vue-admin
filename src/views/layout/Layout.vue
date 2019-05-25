@@ -25,7 +25,7 @@ export default {
   },
   data () {
     return {
-      list:['a','b','c']
+      list: ['a', 'b', 'c']
     }
   },
   computed: {
